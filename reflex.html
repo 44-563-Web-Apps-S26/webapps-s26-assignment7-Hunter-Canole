@@ -22,7 +22,7 @@
     Count
   </div>
 
-  <button type="button" class="btn btn-primary" onclick="buttonPress2()">
+  <button type="button" class="btn btn-primary" onclick="begintime()">
   GO
   </button>
   <button type="button" class="btn btn-primary" onclick="recordtime()">
@@ -35,6 +35,24 @@
     halttime = Date.now()
     console.log(halttime);
   }
+  function begintime(){
+    for(let i =0 ; i<=5 ; i++){
+      setTimeout(function(){
+        document.getElementById('counter').innerHTML= 5 - i;
+      },
+      i * 1000 );
+    }
+  setTimeout(function(){
+        if(halttime==0){
+          document.getElementById('target').innerHTML= "Not soon enough";
+        }
+        else{
+          let targetTime = Date.now()
+          let compute = targetTime - halttime
+          document.getElementById('target').innerHTML= "Time was " + compute ; 
+        }
+      }, 5000)
+}
   function buttonPress1() {
     setTimeout(function(){
       document.getElementById('target').style.color = "red"
